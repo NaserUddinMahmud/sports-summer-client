@@ -1,20 +1,28 @@
+import { Link } from "react-router-dom";
 import logo from "../../../public/ball.png";
+import { HiLogin } from "react-icons/hi";
 
 const NavBar = () => {
   const navItems = (
     <>
       <li>
-        <a>Item 1</a>
+        <a>Home</a>
       </li>
       <li>
-        <a>Item 2</a>
+        <a>Classes</a>
+      </li>
+      <li>
+        <a>Instructors</a>
+      </li>
+      <li>
+        <a>Dashboard</a>
       </li>
     </>
   );
 
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 fixed top-0 z-10 max-w-screen-xl ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -40,7 +48,7 @@ const NavBar = () => {
               {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost">
+          <Link className=" mx-2">
             <div className="flex justify-center items-center -ml-2">
               <img className="w-12" src={logo} alt="" />
               <div>
@@ -48,13 +56,13 @@ const NavBar = () => {
                 <h1 className="uppercase text-2xl font-bold">Summer</h1>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <Link to={'/login'} className="btn btn-sm rounded-3xl text-slate-900">Login<HiLogin/></Link>
         </div>
       </div>
     </>
