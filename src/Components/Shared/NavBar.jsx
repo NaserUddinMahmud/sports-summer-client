@@ -35,14 +35,14 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-10"
             >
               {navItems}
             </ul>
           </div>
           <a className="btn btn-ghost">
             <div className="flex justify-center items-center -ml-2">
-              <img className="w-16" src={logo} alt="" />
+              <img className="w-12" src={logo} alt="" />
               <div>
                 <h1 className="uppercase text-2xl font-bold">Sports</h1>
                 <h1 className="uppercase text-2xl font-bold">Summer</h1>
