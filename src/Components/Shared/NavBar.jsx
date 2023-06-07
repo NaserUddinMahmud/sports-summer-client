@@ -1,12 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../public/ball.png";
-import { HiLogin } from "react-icons/hi";
+import { HiLogin, HiLogout } from "react-icons/hi";
+import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 const NavBar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    const handleSignOut = () => {
+        logOut()
+          .then(() => {
+            Swal.fire({
+                icon: "info",
+                title: "You Have Signed Out!",
+                
+              });
+          })
+          .catch((error) => console.error(error));
+      };
   const navItems = (
     <>
       <li>
-        <a>Home</a>
+        <NavLink to={'/'}className={({ isActive }) =>
+                  isActive ? "bg-success rounded-2xl " : ""}>Home</NavLink>
       </li>
       <li>
         <a>Classes</a>
@@ -22,7 +39,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar bg-base-100 fixed top-0 z-10 max-w-screen-xl ">
+      <div className="navbar  fixed top-0 z-10 max-w-screen-xl bg-green-100">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -62,7 +79,29 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end">
-          <Link to={'/login'} className="btn btn-sm rounded-3xl text-slate-900">Login<HiLogin/></Link>
+          
+
+          {user ? (
+          <>
+            <div className="avatar tooltip tooltip-bottom"data-tip={user.displayName}>
+              <div className="w-12 rounded-full me-4">
+              {user.photoURL?
+             <><img src={user.photoURL}/></> 
+            : <><img src='
+            https://i.ibb.co/gt2zhwX/abstract-user-flat-1.png'/></>
+
+            }
+              </div>
+            </div>
+            <button onClick={handleSignOut} className="btn btn-sm rounded-3xl text-slate-900">
+              Sign Out<HiLogout/>
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to={'/login'} className="btn btn-sm rounded-3xl text-slate-900">Sign in<HiLogin/></Link>
+          </>
+        )}
         </div>
       </div>
     </>

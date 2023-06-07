@@ -17,7 +17,7 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (event) => {
+  const handleSignIn = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -33,7 +33,7 @@ const Login = () => {
 
         Swal.fire({
           icon: "success",
-          title: "Login Successful!",
+          title: "Sign In Successful!",
         });
       })
       .catch((error) => {
@@ -64,11 +64,11 @@ const Login = () => {
       <div className="hero min-h-screen mt-16">
         <div className="hero-content flex-col lg:flex-row">
           <div className="w-3/5 lg:w-3/12">
-            <h1 className="text-2xl lg:text-4xl font-bold text-center">Please Login!</h1>
+            <h1 className="text-2xl lg:text-4xl font-bold text-center ps-8">Please <br /> Sign In!</h1>
             <img src={image} alt="" />
           </div>
           <div className="card w-80 shadow-2xl bg-base-100">
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleSignIn}>
               <div className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -95,7 +95,7 @@ const Login = () => {
                   
                 </div>
                 <div className="form-control mt-5">
-                  <button className="btn btn-success">Login</button>
+                  <button className="btn btn-success">Sign in</button>
                 </div>
               </div>
             </form>
@@ -104,15 +104,15 @@ const Login = () => {
               onClick={handleGoogleSignIn}
               className="btn btn-outline btn-success mx-8 mb-6"
             >
-              <FaGoogle /> <span className="pl-2">Login with Google</span>
+              <FaGoogle /> <span className="pl-2">Sign in with Google</span>
             </button>
 
             <p className="text-red-600 px-10 pb-5">{error}</p>
-            <p className="px-8 pb-10">
-              New to Sports Summer?{" "}
-              <Link to="/register" className=" btn-link">
-                Please register!
-              </Link>
+            <p className="px-10 pb-10">
+             <small> New to Sports Summer?{" "}
+              <Link to="/signUp" className=" btn-link">
+                Sign Up!
+              </Link></small>
             </p>
           </div>
         </div>
