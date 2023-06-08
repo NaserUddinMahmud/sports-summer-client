@@ -32,7 +32,7 @@ const NavBar = () => {
         <a>Instructors</a>
       </li>
       <li>
-        <a>Dashboard</a>
+        {user && <a>Dashboard</a>}
       </li>
     </>
   );

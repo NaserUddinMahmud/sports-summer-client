@@ -1,0 +1,44 @@
+[
+    {
+      "image": "class1.jpg",
+      "name": "Basketball Class",
+      "instructor": "John Doe",
+      "availableSeats": 15,
+      "price": 50
+    },
+    {
+      "image": "class2.jpg",
+      "name": "Football Class",
+      "instructor": "Jane Smith",
+      "availableSeats": 10,
+      "price": 60
+    },
+    {
+      "image": "class3.jpg",
+      "name": "Swimming Class",
+      "instructor": "Mike Johnson",
+      "availableSeats": 12,
+      "price": 70
+    }
+    {
+      "image": "class1.jpg",
+      "name": "Basketball Class",
+      "instructor": "John Doe",
+      "availableSeats": 15,
+      "price": 50
+    },
+    {
+      "image": "class2.jpg",
+      "name": "Football Class",
+      "instructor": "Jane Smith",
+      "availableSeats": 10,
+      "price": 60
+    },
+    {
+      "image": "class3.jpg",
+      "name": "Swimming Class",
+      "instructor": "Mike Johnson",
+      "availableSeats": 12,
+      "price": 70
+    }
+  ]

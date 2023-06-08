@@ -50,7 +50,7 @@ const Login = () => {
         navigate(from, { replace: true });
         Swal.fire({
           icon: "success",
-          title: "Login Successful!",
+          title: "Sign In Successful!",
         });
       })
       .catch((error) => {
