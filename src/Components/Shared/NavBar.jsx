@@ -93,13 +93,13 @@ const NavBar = () => {
             }
               </div>
             </div>
-            <button onClick={handleSignOut} className="btn btn-sm rounded-3xl text-slate-900">
+            <button onClick={handleSignOut} className="btn bg-gray-400 btn-sm rounded-3xl text-slate-900">
               Sign Out<HiLogout/>
             </button>
           </>
         ) : (
           <>
-            <Link to={'/login'} className="btn btn-sm rounded-3xl text-slate-900">Sign in<HiLogin/></Link>
+            <Link to={'/login'} className="btn btn-sm bg-gray-400 rounded-3xl text-slate-900">Sign in<HiLogin/></Link>
           </>
         )}
         </div>
