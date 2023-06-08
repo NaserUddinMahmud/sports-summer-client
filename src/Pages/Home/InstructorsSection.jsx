@@ -3,7 +3,7 @@ import useInstructors from "../../hooks/useInstructors";
 import Card2 from "../../Components/Card2";
 
 
-const Instructors = () => {
+const InstructorsSection = () => {
     const [instructors] = useInstructors()
     return (
         <div>
@@ -24,4 +24,4 @@ const Instructors = () => {
     );
 };
 
-export default Instructors;
+export default InstructorsSection;

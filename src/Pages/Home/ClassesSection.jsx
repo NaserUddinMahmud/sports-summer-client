@@ -1,7 +1,7 @@
 import Card from "../../Components/Card";
 import { Rotate } from "react-awesome-reveal";
 import useClasses from "../../hooks/useClasses";
-const Classes = () => {
+const ClassesSection = () => {
   const [Classes] = useClasses();
   return (
     <>
@@ -20,4 +20,4 @@ const Classes = () => {
   );
 };
 
-export default Classes;
+export default ClassesSection;

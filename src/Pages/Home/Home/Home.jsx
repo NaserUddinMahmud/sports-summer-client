@@ -1,14 +1,13 @@
 import Banner from "../Banner";
-import Classes from "../Classes";
-import Instructors from "../Instructors";
-
+import ClassesSection from "../ClassesSection";
+import InstructorsSection from "../InstructorsSection";
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <Classes></Classes>
-            <Instructors></Instructors>
+            <ClassesSection></ClassesSection>
+            <InstructorsSection></InstructorsSection>
         </div>
     );
 };

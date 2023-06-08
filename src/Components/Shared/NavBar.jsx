@@ -26,10 +26,13 @@ const NavBar = () => {
                   isActive ? "bg-success rounded-2xl " : ""}>Home</NavLink>
       </li>
       <li>
-        <a>Classes</a>
+      <NavLink to={'/classes'}className={({ isActive }) =>
+                  isActive ? "bg-success rounded-2xl " : ""}>Classes</NavLink>
       </li>
       <li>
-        <a>Instructors</a>
+      <NavLink to={'/instructors'}className={({ isActive }) =>
+                  isActive ? "bg-success rounded-2xl " : ""}>Instructors</NavLink>
+       
       </li>
       <li>
         {user && <a>Dashboard</a>}
