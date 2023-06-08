@@ -1,42 +1,42 @@
 [
     {
-      "image": "class1.jpg",
-      "name": "Basketball Class",
+      "image": "https://images.unsplash.com/photo-1593341646782-e0b495cff86d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+      "name": "Cricket Class",
       "instructor": "John Doe",
       "availableSeats": 15,
       "price": 50
     },
     {
-      "image": "class2.jpg",
+      "image": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80",
       "name": "Football Class",
       "instructor": "Jane Smith",
       "availableSeats": 10,
       "price": 60
     },
     {
-      "image": "class3.jpg",
-      "name": "Swimming Class",
+      "image": "https://images.unsplash.com/photo-1599391398131-cd12dfc6c24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1422&q=80",
+      "name": "Badminton Class",
       "instructor": "Mike Johnson",
       "availableSeats": 12,
       "price": 70
     },
     {
-      "image": "class1.jpg",
+      "image": "https://images.unsplash.com/photo-1515523110800-9415d13b84a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
       "name": "Basketball Class",
       "instructor": "John Doe",
       "availableSeats": 15,
       "price": 50
     },
     {
-      "image": "class2.jpg",
-      "name": "Football Class",
+      "image": "https://images.unsplash.com/photo-1553451310-1416336a3cca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1372&q=80",
+      "name": "Volleyball Class",
       "instructor": "Jane Smith",
       "availableSeats": 10,
       "price": 60
     },
     {
-      "image": "class3.jpg",
-      "name": "Swimming Class",
+      "image": "https://images.unsplash.com/photo-1614743758466-e569f4791116?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=350&q=80",
+      "name": "Tennis Class",
       "instructor": "Mike Johnson",
       "availableSeats": 12,
       "price": 70

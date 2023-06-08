@@ -7,7 +7,7 @@ const useClasses = () => {
             return res.json();
         },
       })
-      return [classes, refetch]
+      return [classes]
 }
 
 export default useClasses;
