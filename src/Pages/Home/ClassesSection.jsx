@@ -13,9 +13,7 @@ const ClassesSection = () => {
         ))}
       </Rotate>
     </div>
-    <div >
-      <button className="btn btn-success rounded-2xl mx-auto flex justify-center my-4">View All Classes</button>
-      </div>
+    
     </>
   );
 };

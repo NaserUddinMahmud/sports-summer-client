@@ -3,7 +3,7 @@ const useClasses = () => {
     const { isLoading, isError, data: classes =[], error, refetch } = useQuery({
         // queryKey: ['todos'],
         queryFn: async () =>{
-            const res =await fetch('classes.json')
+            const res =await fetch('http://localhost:5000/classes')
             return res.json();
         },
       })
