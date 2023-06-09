@@ -32,7 +32,7 @@ const NavBar = () => {
       <li>
       <NavLink to={'/instructors'}className={({ isActive }) =>
                   isActive ? "bg-success rounded-2xl " : ""}>Instructors</NavLink>
-       
+     
       </li>
       <li>
         {user && <a>Dashboard</a>}

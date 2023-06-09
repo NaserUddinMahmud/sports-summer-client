@@ -1,14 +1,39 @@
 import { useContext, useState } from "react";
-import { FaGoogle } from "react-icons/fa";
-import image from "../../assets/undraw_secure_login_pdn4.svg"
+import { FaGoogle, FaEyeSlash, FaEye } from "react-icons/fa";
+import image from "../../assets/undraw_secure_login_pdn4.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
-
-
 import Swal from "sweetalert2";
-
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    signIn(data.email, data.password)
+    .then(result =>{
+      const user = result.user;
+      console.log(user);
+      navigate(from, { replace: true });
+      setError("");
+      reset();
+      Swal.fire({
+        icon: "success",
+        title: "Sign In Successful!",
+      });
+    })
+    .catch((error) => {
+      console.log(error.message);
+      setError(error.message);
+    });
+  };
+
   const { signIn, signInWithGoogle } = useContext(AuthContext);
 
   const [error, setError] = useState("");
@@ -17,30 +42,7 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const handleSignIn = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
-    signIn(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        setError("");
-        form.reset();
-        navigate(from, { replace: true });
-
-        Swal.fire({
-          icon: "success",
-          title: "Sign In Successful!",
-        });
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setError(error.message);
-      });
-  };
+  
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
@@ -55,20 +57,28 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setError(error.message);
       });
+  };
+
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
   return (
     <>
-      
       <div className="hero min-h-screen mt-16">
         <div className="hero-content flex-col lg:flex-row">
           <div className="w-3/5 lg:w-3/12">
-            <h1 className="text-2xl lg:text-4xl font-bold text-center ps-8">Please <br /> Sign In!</h1>
+            <h1 className="text-2xl lg:text-4xl font-bold text-center ps-8">
+              Please <br /> Sign In!
+            </h1>
             <img src={image} alt="" />
           </div>
           <div className="card w-80 shadow-2xl bg-base-100">
-            <form onSubmit={handleSignIn}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -76,23 +86,56 @@ const Login = () => {
                   </label>
                   <input
                     type="text"
+                    {...register("email", { required: true })}
                     name="email"
                     placeholder="email"
                     className="input input-bordered"
                   />
+                  {errors.email && (
+                    <span className="text-red-500 text-sm">Email is required</span>
+                  )}
+                  
                 </div>
 
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    className="input input-bordered"
-                  />
-                  
+                  <div className="flex items-center">
+                    <input
+                      type={passwordVisible ? "text" : "password"}
+                      {...register("password", {
+                        required: true,
+                        minLength: 6,
+                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/,
+                      })}
+                      name="password"
+                      placeholder="password"
+                      className="input input-bordered mr-5"
+                    />
+
+                    <span onClick={togglePasswordVisibility}>
+                      {passwordVisible ? (
+                        <FaEye></FaEye>
+                      ) : (
+                        <FaEyeSlash></FaEyeSlash>
+                      )}
+                    </span>
+                  </div>
+                  {errors.password?.type === "required" && 
+                    <span className="text-red-500 text-sm">Password is required</span>
+                  }
+                  {errors.password?.type === "minLength" && 
+                    <p className="text-red-500 text-sm">
+                      Password must be at least 6 characters
+                    </p>
+                  }
+                  {errors.password?.type === "pattern" && 
+                    <p className="text-red-500 text-sm">
+                      Password must have at least one uppercase and one special
+                      character.
+                    </p>
+                  }
                 </div>
                 <div className="form-control mt-5">
                   <button className="btn btn-success">Sign in</button>
@@ -109,10 +152,13 @@ const Login = () => {
 
             <p className="text-red-600 px-10 pb-5">{error}</p>
             <p className="px-10 pb-10">
-             <small> New to Sports Summer?{" "}
-              <Link to="/signUp" className=" btn-link">
-                Sign Up!
-              </Link></small>
+              <small>
+                {" "}
+                New to Sports Summer?{" "}
+                <Link to="/signUp" className=" btn-link">
+                  Sign Up!
+                </Link>
+              </small>
             </p>
           </div>
         </div>
