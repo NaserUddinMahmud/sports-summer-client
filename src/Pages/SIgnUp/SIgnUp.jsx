@@ -1,16 +1,15 @@
 import { useContext, useState } from "react";
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import image from "../../assets/undraw_secure_login_pdn4.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
 
 import { AuthContext } from "../../context/AuthProvider";
 import { useForm } from "react-hook-form";
 
 const SignUp = () => {
-
-  const { createUser,updateUserProfile, signInWithGoogle } = useContext(AuthContext);
+  const { createUser, updateUserProfile, signInWithGoogle } =
+    useContext(AuthContext);
 
   const [error, setError] = useState("");
 
@@ -35,16 +34,28 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         updateUserProfile(data.name, data.photoURL)
-        .then(() => {
-          console.log('user profile updated')
-          reset();
-          navigate(from, { replace: true });
-          Swal.fire({
-            icon: "success",
-            title: "User Created Successfully!",
-          });
-        })
-        .catch(error => console.log(error))
+          .then(() => {
+            const saveUser = {name: data.name, email: data.email}
+            fetch("http://localhost:5000/users", {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify(saveUser)
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  reset();
+                  navigate(from, { replace: true });
+                  Swal.fire({
+                    icon: "success",
+                    title: "User Created Successfully!",
+                  });
+                }
+              });
+          })
+          .catch((error) => console.log(error));
         setError(error.message);
       })
       .catch((error) => {
@@ -52,13 +63,20 @@ const SignUp = () => {
         setError(error.message);
       });
   };
-  
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        const saveUser = {name: loggedUser.displayName, email: loggedUser.email}
+        fetch("http://localhost:5000/users", {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(saveUser)
+        })
         navigate(from, { replace: true });
         Swal.fire({
           icon: "success",
@@ -66,7 +84,7 @@ const SignUp = () => {
         });
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error);
         setError(error.message);
       });
   };
@@ -199,13 +217,13 @@ const SignUp = () => {
                 </div>
               </div>
             </form>
-
+            <div className="divider w-3/4 mx-auto">or</div>
             <button
               onClick={handleGoogleSignIn}
-              className="btn btn-outline btn-success mb-6 mx-8"
+              className="btn btn-outline rounded-full btn-success mb-6 mx-8"
             >
               {" "}
-              <FaGoogle /> <span className="pl-2">Sign In with Google</span>
+              <FcGoogle /> <span className="pl-2">Sign In with Google</span>
             </button>
 
             <p className="text-red-500 text-sm px-5">{error}</p>

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
-import { FaGoogle, FaEyeSlash, FaEye } from "react-icons/fa";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import image from "../../assets/undraw_secure_login_pdn4.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
@@ -49,6 +50,14 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        const saveUser = {name: loggedUser.displayName, email: loggedUser.email}
+        fetch("http://localhost:5000/users", {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(saveUser)
+        })
         navigate(from, { replace: true });
         Swal.fire({
           icon: "success",
@@ -111,7 +120,7 @@ const Login = () => {
                       })}
                       name="password"
                       placeholder="password"
-                      className="input input-bordered mr-5"
+                      className="input input-bordered mr-5 "
                     />
 
                     <span onClick={togglePasswordVisibility}>
@@ -142,12 +151,13 @@ const Login = () => {
                 </div>
               </div>
             </form>
-
+            <div className="divider w-3/4 mx-auto">or</div>
+            
             <button
               onClick={handleGoogleSignIn}
-              className="btn btn-outline btn-success mx-8 mb-6"
+              className="btn btn-outline btn-success rounded-full mx-8 mb-6"
             >
-              <FaGoogle /> <span className="pl-2">Sign in with Google</span>
+              <FcGoogle /> <span className="pl-2">Sign in with Google</span>
             </button>
 
             <p className="text-red-500 text-sm px-10 pb-5">{error}</p>

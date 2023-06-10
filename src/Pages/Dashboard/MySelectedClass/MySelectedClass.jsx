@@ -1,11 +1,98 @@
-
+import Swal from "sweetalert2";
+import useSelectedClass from "../../../hooks/useSelectedClass";
+import { FaTrash } from "react-icons/fa";
 
 const MySelectedClass = () => {
-    return (
+  const [selectedClasses, refetch] = useSelectedClass();
+  const fees = selectedClasses.reduce((sum, item) => sum + item.price, 0);
+
+  const handleDelete = (selectedClass) => {
+    Swal.fire({
+      title: "Are you sure you want delete it?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/selectedClasses/${selectedClass._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
+      }
+    });
+  };
+
+  return (
+    <div className="w-3/4">
+      <div className="flex justify-evenly items-center w-full">
+        <h2 className="text-2xl font-medium">
+          Classes Selected: {selectedClasses.length}
+        </h2>
         <div>
-            <h2>MySelectedClass</h2>
+          <h2 className="text-lg font-medium">Total Fees: ${fees}</h2>
+          <button
+            className="btn btn-success btn-sm rounded-2xl
+            "
+          >
+            Make Payment
+          </button>
         </div>
-    );
+      </div>
+      <div className="divider"></div>
+      <div className="overflow-x-auto">
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              <th>Serial</th>
+              <th>Class</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* row  */}
+            {selectedClasses.map((selectedClass, index) => (
+              <tr key={selectedClass._id}>
+                <td>{index + 1}</td>
+                <td>
+                  <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img
+                          src={selectedClass.image}
+                          alt="Avatar Tailwind CSS Component"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>{selectedClass.name}</td>
+                <td className="text-end">${selectedClass.price}</td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(selectedClass)}
+                    className="btn btn-error btn-xs text-white"
+                  >
+                    <FaTrash></FaTrash>
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default MySelectedClass;
