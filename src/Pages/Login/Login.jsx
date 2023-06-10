@@ -150,7 +150,7 @@ const Login = () => {
               <FaGoogle /> <span className="pl-2">Sign in with Google</span>
             </button>
 
-            <p className="text-red-600 px-10 pb-5">{error}</p>
+            <p className="text-red-500 text-sm px-10 pb-5">{error}</p>
             <p className="px-10 pb-10">
               <small>
                 {" "}
