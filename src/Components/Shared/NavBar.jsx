@@ -38,13 +38,13 @@ const NavBar = () => {
         {user && <NavLink to={'/dashboard'}className={({ isActive }) =>
                   isActive ? "bg-success rounded-2xl " : ""}>Dashboard</NavLink>}
       </li>
-      <li>
+      {/* <li>
         {user && <NavLink to={'/'}className={({ isActive }) =>
                   isActive ? "bg-success rounded-2xl " : ""}><button className="btn">
                   Inbox
                   <div className="badge badge-secondary">+99</div>
                 </button></NavLink>}
-      </li>
+      </li> */}
     </>
   );
 
