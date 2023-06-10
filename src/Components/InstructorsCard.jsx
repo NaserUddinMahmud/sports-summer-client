@@ -1,6 +1,6 @@
 
 
-const Card2 = ({item}) => {
+const InstructorsCard = ({item}) => {
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
   <figure className="px-10 pt-10">
@@ -17,4 +17,4 @@ const Card2 = ({item}) => {
     );
 };
 
-export default Card2;
+export default InstructorsCard;

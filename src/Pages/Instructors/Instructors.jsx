@@ -1,4 +1,5 @@
-import InstructorsSection from "../../Home/InstructorsSection";
+import InstructorsSection from "../Home/InstructorsSection";
+
 
 
 const Instructors = () => {

@@ -4,9 +4,10 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SIgnUp/SIgnUp";
 import Classes from "../Pages/Classes/Classes";
-import Instructors from "../Pages/Classes/Instructors/Instructors";
+
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import Instructors from "../Pages/Instructors/Instructors";
 
 export const router = createBrowserRouter([
   {

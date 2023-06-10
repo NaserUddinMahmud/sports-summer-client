@@ -1,6 +1,7 @@
-import Card from "../../Components/Card";
+
 import { Rotate } from "react-awesome-reveal";
 import useClasses from "../../hooks/useClasses";
+import ClassesCard from "../../Components/ClassesCard";
 const ClassesSection = () => {
   const [Classes] = useClasses();
   return (
@@ -9,7 +10,7 @@ const ClassesSection = () => {
     <div className="grid lg:grid-cols-3 gap-3 ">
       <Rotate>
         {Classes.map(Class => (
-          <Card key={Class._id} item={Class}></Card>
+          <ClassesCard key={Class._id} item={Class}></ClassesCard>
         ))}
       </Rotate>
     </div>

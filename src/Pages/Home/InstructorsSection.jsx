@@ -1,7 +1,8 @@
 import { Flip } from "react-awesome-reveal";
 
-import Card2 from "../../Components/Card2";
+
 import { useEffect, useState } from "react";
+import InstructorsCard from "../../Components/InstructorsCard";
 
 const InstructorsSection = () => {
   const [instructors, setInstructors] =useState([])
@@ -21,7 +22,7 @@ const InstructorsSection = () => {
       <div className="grid lg:grid-cols-3 gap-3 ">
         <Flip>
           {instructors.map((instructor) => (
-            <Card2 key={instructor._id} item={instructor}></Card2>
+            <InstructorsCard key={instructor._id} item={instructor}></InstructorsCard>
           ))}
         </Flip>
       </div>
