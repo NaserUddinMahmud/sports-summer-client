@@ -38,13 +38,7 @@ const NavBar = () => {
         {user && <NavLink to={'/dashboard'}className={({ isActive }) =>
                   isActive ? "bg-success rounded-2xl " : ""}>Dashboard</NavLink>}
       </li>
-      {/* <li>
-        {user && <NavLink to={'/'}className={({ isActive }) =>
-                  isActive ? "bg-success rounded-2xl " : ""}><button className="btn">
-                  Inbox
-                  <div className="badge badge-secondary">+99</div>
-                </button></NavLink>}
-      </li> */}
+     
     </>
   );
 
@@ -76,7 +70,7 @@ const NavBar = () => {
               {navItems}
             </ul>
           </div>
-          <Link className=" mx-2">
+          <NavLink className=" mx-2">
             <div className="flex justify-center items-center -ml-2">
               <img className="w-12" src={logo} alt="" />
               <div>
@@ -84,7 +78,7 @@ const NavBar = () => {
                 <h1 className="uppercase text-2xl font-bold">Summer</h1>
               </div>
             </div>
-          </Link>
+          </NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
@@ -110,7 +104,7 @@ const NavBar = () => {
           </>
         ) : (
           <>
-            <Link to={'/login'} className="btn btn-sm bg-gray-400 rounded-3xl text-slate-900">Sign in<HiLogin/></Link>
+            <NavLink to={'/login'} className="btn btn-sm bg-gray-400 rounded-3xl text-slate-900">Sign in<HiLogin/></NavLink>
           </>
         )}
         </div>
