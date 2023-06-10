@@ -7,6 +7,15 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 
 const Login = () => {
+
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const {
     register,
     handleSubmit,
@@ -15,7 +24,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     signIn(data.email, data.password)
     .then(result =>{
       const user = result.user;
@@ -34,15 +43,6 @@ const Login = () => {
     });
   };
 
-  const { signIn, signInWithGoogle } = useContext(AuthContext);
-
-  const [error, setError] = useState("");
-
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-
-  
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()

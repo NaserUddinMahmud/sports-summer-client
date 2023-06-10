@@ -3,12 +3,21 @@ import { FaGoogle } from "react-icons/fa";
 import image from "../../assets/undraw_secure_login_pdn4.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { updateProfile } from "firebase/auth";
+
 
 import { AuthContext } from "../../context/AuthProvider";
 import { useForm } from "react-hook-form";
 
 const SignUp = () => {
+
+  const { createUser,updateUserProfile, signInWithGoogle } = useContext(AuthContext);
+
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const {
     register,
     handleSubmit,
@@ -25,60 +34,25 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        reset();
-        navigate(from, { replace: true });
-        // updateUserData(user, name, photo);
-
-        Swal.fire({
-          icon: "success",
-          title: "Sign Up Successful!",
-        });
+        updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          console.log('user profile updated')
+          reset();
+          navigate(from, { replace: true });
+          Swal.fire({
+            icon: "success",
+            title: "User Created Successfully!",
+          });
+        })
+        .catch(error => console.log(error))
+        setError(error.message);
       })
       .catch((error) => {
         console.log(error.message);
         setError(error.message);
       });
   };
-  const { createUser, signInWithGoogle } = useContext(AuthContext);
-
-  const [error, setError] = useState("");
-
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-
-  // const handleRegister = (event) => {
-  //   event.preventDefault();
-  //   const form = event.target;
-  //   const name = form.name.value;
-  //   const email = form.email.value;
-  //   const password = form.password.value;
-  //   const photo = form.photo.value;
-  //   console.log(name, email, password);
-
-  //   setError("");
-  //   if (password.length < 6) {
-  //     setError("Password must be 6 characters or longer");
-  //     return;
-  //   }
-  //   createUser(email, password)
-  //     .then((result) => {
-  //       const user = result.user;
-  //       console.log(user);
-  //       form.reset();
-  //       navigate(from, { replace: true });
-  //       updateUserData(user, name, photo);
-  //       navigate(from, { replace: true });
-  //       Swal.fire({
-  //         icon: "success",
-  //         title: "Sign Up Successful!",
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //       setError(error.message);
-  //     });
-  // };
+  
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
@@ -88,7 +62,7 @@ const SignUp = () => {
         navigate(from, { replace: true });
         Swal.fire({
           icon: "success",
-          title: "Registration Successful!",
+          title: "Sign In Successful!",
         });
       })
       .catch((error) => {
@@ -96,19 +70,6 @@ const SignUp = () => {
         setError(error.message);
       });
   };
-
-  // const updateUserData = (user, name, photo) => {
-  //   updateProfile(user, {
-  //     displayName: name,
-  //     photoURL: photo,
-  //   })
-  //     .then(() => {
-  //       console.log("user profile updated");
-  //     })
-  //     .catch((error) => {
-  //       setError(error.message);
-  //     });
-  // };
 
   return (
     <div>
@@ -176,20 +137,22 @@ const SignUp = () => {
                     className="input input-bordered"
                     required
                   />
-                  {errors.password?.type === "required" && 
-                    <span className="text-red-500 text-sm">Password is required</span>
-                  }
-                  {errors.password?.type === "minLength" && 
+                  {errors.password?.type === "required" && (
+                    <span className="text-red-500 text-sm">
+                      Password is required
+                    </span>
+                  )}
+                  {errors.password?.type === "minLength" && (
                     <p className="text-red-500 text-sm">
                       Password must be at least 6 characters
                     </p>
-                  }
-                  {errors.password?.type === "pattern" && 
+                  )}
+                  {errors.password?.type === "pattern" && (
                     <p className="text-red-500 text-sm">
                       Password must have at least one uppercase and one special
                       character.
                     </p>
-                  }
+                  )}
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -197,16 +160,21 @@ const SignUp = () => {
                   </label>
                   <input
                     type="password"
-                    {...register("confirmPassword", { required: true,validate: (value) => value === watch("password") || "Passwords do not match" })}
+                    {...register("confirmPassword", {
+                      required: true,
+                      validate: (value) =>
+                        value === watch("password") || "Passwords do not match",
+                    })}
                     name="confirmPassword"
                     placeholder="password"
                     className="input input-bordered"
                     required
                   />
                   {errors.confirmPassword && (
-    <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>
-  )}
-                 
+                    <p className="text-red-500 text-sm">
+                      {errors.confirmPassword.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="form-control">
@@ -215,9 +183,15 @@ const SignUp = () => {
                   </label>
                   <input
                     type="text"
-                    name="photo"
+                    {...register("photoURL", { required: true })}
+                    name="photoURL"
                     className="file-input file-input-ghost file-input-bordered w-full max-w-xs px-5"
                   />
+                  {errors.photoURL && (
+                    <span className="text-red-500 text-sm">
+                      Photo URL is required
+                    </span>
+                  )}
                 </div>
                 <p className="text-red-500 text-sm">{error}</p>
                 <div className="form-control mt-2">
@@ -234,7 +208,7 @@ const SignUp = () => {
               <FaGoogle /> <span className="pl-2">Sign In with Google</span>
             </button>
 
-            <p className="text-red-600 px-5"></p>
+            <p className="text-red-500 text-sm px-5">{error}</p>
             <p className="px-10 pb-10">
               <small>
                 Already have an account?{" "}
