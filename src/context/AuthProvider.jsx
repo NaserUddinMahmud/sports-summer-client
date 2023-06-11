@@ -55,13 +55,14 @@ const AuthProvider = ({children}) => {
                 .then(data =>{
                     // console.log(data.data);
                     localStorage.setItem('access-token', data.data.token)
+                    setIsLoading(false);
                 })
             }
             else{
                 localStorage.removeItem('access-token')
             }
 
-            setIsLoading(false);
+            
         });
 
         return () =>{
