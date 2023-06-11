@@ -1,16 +1,19 @@
 import { Flip } from "react-awesome-reveal";
 
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import InstructorsCard from "../../Components/InstructorsCard";
+import useInstructors from "../../hooks/useInstructors";
 
 const InstructorsSection = () => {
-  const [instructors, setInstructors] =useState([])
-  useEffect(()=>{
-    fetch('http://localhost:5000/instructors')
-    .then(res => res.json())
-    .then(data => setInstructors(data))
-  })
+  // const [instructors, setInstructors] =useState([])
+  // useEffect(()=>{
+  //   fetch('http://localhost:5000/instructors')
+  //   .then(res => res.json())
+  //   .then(data => setInstructors(data))
+  // })
+
+  const [instructors] = useInstructors()
   
   return (
     <>

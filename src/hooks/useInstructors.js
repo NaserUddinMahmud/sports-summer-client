@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 const useInstructors = () => {
-    const { isLoading, isError, data: instructors =[], error, refetch } = useQuery({
+    const {  data: instructors =[],   } = useQuery({
         queryKey: ['todos'],
         queryFn: async () =>{
             const res =await fetch('http://localhost:5000/instructors')
