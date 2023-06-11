@@ -1,9 +1,10 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-//   const isAdmin = true;
-const [isAdmin] = useAdmin()
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   return (
     <div className="drawer lg:drawer-open">
@@ -24,20 +25,35 @@ const [isAdmin] = useAdmin()
           {/* Sidebar content here */}
           {isAdmin ? (
             <>
-            <li><Link>Admin Home</Link></li>
-            <li><Link to={'/dashboard/allUsers'}>Manage Users</Link></li>
-            </>
-          ) : (
-            <>
               <li>
-                <Link to={"/dashboard/mySelectedClass"}>Selected Classes</Link>
+                <Link>Manage Classes</Link>
               </li>
               <li>
-                <a>Payment History</a>
+                <Link to={"/dashboard/allUsers"}>Manage Users</Link>
+              </li>
+            </>
+          ) : isInstructor?
+          (<>
+              <li>
+                <Link to={"/dashboard/addClass"}>Add a Class</Link>
+              </li>
+              <li>
+                <Link >My Classes</Link>
+              </li>
+            </>)
+             : (
+            <>
+              <li>
+                <Link to={"/dashboard/mySelectedClass"}>
+                  My Selected Classes
+                </Link>
+              </li>
+              <li>
+                <Link>My Enrolled Classes</Link>
               </li>
             </>
           )}
-         
+
           <div className="divider"></div>
           <li>
             <Link to={"/"}>Home</Link>

@@ -5,7 +5,6 @@ import useAxiosSecure from './useAxiosSecure'
 
 const useSelectedClass = () => {
     const {user, isLoading} = useContext(AuthContext)
-    // const token = localStorage.getItem('access-token')
     const axiosSecure = useAxiosSecure()
     const {  data: selectedClasses =[],  refetch } = useQuery({
         queryKey: ['selectedClass' ],
