@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import useSelectedClass from "../../../hooks/useSelectedClass";
-import { FaTrash } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
+import { FcMoneyTransfer } from "react-icons/fc";
 
 const MySelectedClass = () => {
   const [selectedClasses, refetch] = useSelectedClass();
@@ -56,7 +57,8 @@ const MySelectedClass = () => {
               <th>Class</th>
               <th>Name</th>
               <th>Price</th>
-              <th></th>
+              <th>Payment</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
@@ -70,7 +72,7 @@ const MySelectedClass = () => {
                       <div className="mask mask-squircle w-12 h-12">
                         <img
                           src={selectedClass.image}
-                          alt="Avatar Tailwind CSS Component"
+                          alt="class image"
                         />
                       </div>
                     </div>
@@ -81,9 +83,17 @@ const MySelectedClass = () => {
                 <td>
                   <button
                     onClick={() => handleDelete(selectedClass)}
+                    className="btn bg-green-200 btn-sm text-white"
+                  >
+                    <FcMoneyTransfer></FcMoneyTransfer>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => handleDelete(selectedClass)}
                     className="btn btn-error btn-xs text-white"
                   >
-                    <FaTrash></FaTrash>
+                    <FaTrashAlt></FaTrashAlt>
                   </button>
                 </td>
               </tr>

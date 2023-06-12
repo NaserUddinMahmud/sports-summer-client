@@ -12,6 +12,9 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 import InstructorRoute from "./InstructorRoute";
 import AdminRoute from "./AdminRoute";
+import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
+import Feedback from "../Pages/Dashboard/ManageClasses/Feedback";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -47,7 +50,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path:'/dashboard/mySelectedClass',
-        element: <MySelectedClass></MySelectedClass>
+        element: <PrivateRoute><MySelectedClass></MySelectedClass></PrivateRoute>
       },
       {
         path:'/dashboard/allUsers',
@@ -56,6 +59,20 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/addClass',
         element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
+      },
+      {
+        path: '/dashboard/manageClass',
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+      },
+      {
+        path: '/dashboard/feedback/:id',
+        element: <AdminRoute><Feedback></Feedback></AdminRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
+      },
+      {
+        path: '/dashboard/payment/:id',
+        element: <Payment></Payment>,
+        loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
       }
     ]
   }

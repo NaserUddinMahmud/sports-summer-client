@@ -33,6 +33,7 @@ const AddItem = () => {
             instructor,
             instructorEmail,
             image: imgURL,
+            status:'pending'
           };
           axiosSecure.post("/classes", newClass).then((data) => {
             if (data.data.insertedId) {
