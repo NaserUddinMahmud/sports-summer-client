@@ -16,6 +16,7 @@ import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 import Feedback from "../Pages/Dashboard/ManageClasses/Feedback";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import MyEnrolledClass from "../Pages/Dashboard/MyEnrolledClass/MyEnrolledClass";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path:'/dashboard/mySelectedClass',
         element: <PrivateRoute><MySelectedClass></MySelectedClass></PrivateRoute>
+      },
+      {
+        path:'/dashboard/myEnrolledClass',
+        element: <PrivateRoute><MyEnrolledClass></MyEnrolledClass></PrivateRoute>,
       },
       {
         path: '/dashboard/payment/:id',

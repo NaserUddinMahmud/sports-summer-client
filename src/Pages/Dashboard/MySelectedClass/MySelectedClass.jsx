@@ -33,7 +33,10 @@ const MySelectedClass = () => {
   };
 
   return (
-    <div className="w-3/4">
+    <>
+    {selectedClasses.length >0
+      ?
+      <div className="w-3/4">
       <div className="flex justify-evenly items-center w-full">
         <h2 className="text-3xl font-medium">
           Classes Selected: {selectedClasses.length}
@@ -94,6 +97,12 @@ const MySelectedClass = () => {
         </table>
       </div>
     </div>
+      :
+      <h2 className="text-3xl font-medium">
+          You have not selected any class yet
+        </h2>
+    }
+    </>
   );
 };
 
