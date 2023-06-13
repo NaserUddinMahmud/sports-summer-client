@@ -2,11 +2,12 @@ import Swal from "sweetalert2";
 import useSelectedClass from "../../../hooks/useSelectedClass";
 import { FaTrashAlt } from "react-icons/fa";
 import { FcMoneyTransfer } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const MySelectedClass = () => {
   const [selectedClasses, refetch] = useSelectedClass();
   const fees = selectedClasses.reduce((sum, item) => sum + item.price, 0);
-
+    console.log(10,selectedClasses);
   const handleDelete = (selectedClass) => {
     Swal.fire({
       title: "Are you sure you want delete it?",
@@ -70,10 +71,7 @@ const MySelectedClass = () => {
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img
-                          src={selectedClass.image}
-                          alt="class image"
-                        />
+                        <img src={selectedClass.image} alt="class image" />
                       </div>
                     </div>
                   </div>
@@ -81,12 +79,11 @@ const MySelectedClass = () => {
                 <td>{selectedClass.name}</td>
                 <td className="text-end">${selectedClass.price}</td>
                 <td>
-                  <button
-                    onClick={() => handleDelete(selectedClass)}
+                  <Link to={`/dashboard/payment/${selectedClass._id}`}><button
                     className="btn bg-green-200 btn-sm text-white"
                   >
                     <FcMoneyTransfer></FcMoneyTransfer>
-                  </button>
+                  </button></Link>
                 </td>
                 <td>
                   <button

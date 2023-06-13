@@ -15,11 +15,13 @@ import AdminRoute from "./AdminRoute";
 import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 import Feedback from "../Pages/Dashboard/ManageClasses/Feedback";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -53,6 +55,11 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><MySelectedClass></MySelectedClass></PrivateRoute>
       },
       {
+        path: '/dashboard/payment/:id',
+        element: <Payment></Payment>,
+        loader: ({params}) => fetch(`http://localhost:5000/selectedClasses/${params.id}`)
+      },
+      {
         path:'/dashboard/allUsers',
         element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
@@ -68,12 +75,8 @@ export const router = createBrowserRouter([
         path: '/dashboard/feedback/:id',
         element: <AdminRoute><Feedback></Feedback></AdminRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
-      },
-      {
-        path: '/dashboard/payment/:id',
-        element: <Payment></Payment>,
-        loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
       }
+      
     ]
   }
 ]);
