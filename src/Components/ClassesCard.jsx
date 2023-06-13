@@ -2,10 +2,18 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useSelectedClass from "../hooks/useSelectedClass";
 
 const ClassesCard = ({item}) => {
   const{_id, image, name, instructor, availableSeats, price} = item;
-  const {user} = useContext(AuthContext)
+  const {user} = useContext(AuthContext);
+  const [selectedClasses] = useSelectedClass();
+  // const isClassSelected = selectedClasses.map(
+  //   selected => selected.classId === _id
+  // );
+  // console.log('isClassSelected',isClassSelected);
+  
+  // console.log('selectedClasses btn dsble',selectedClasses);
   const navigate = useNavigate();
   const location = useLocation()
 
@@ -58,7 +66,8 @@ const ClassesCard = ({item}) => {
     <p>Available Seats: { availableSeats}</p>
     <p>Price: ${price}</p>
     <div className="card-actions justify-center">
-      <button onClick={()=>handleSelect(item)} className="btn btn-sm bg-slate-600 text-white rounded-2xl">Select</button>
+    {/* {isClassSelected ? <button onClick={()=>handleSelect(item)}className="btn btn-sm btn-disabled bg-slate-600 text-gray-500 rounded-2xl">Select</button>: <button onClick={()=>handleSelect(item)}className="btn btn-sm bg-slate-600 text-white rounded-2xl">Select</button>}  */}
+     
     </div>
   </div>
 </div>

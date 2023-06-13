@@ -35,17 +35,12 @@ const MySelectedClass = () => {
   return (
     <div className="w-3/4">
       <div className="flex justify-evenly items-center w-full">
-        <h2 className="text-2xl font-medium">
+        <h2 className="text-3xl font-medium">
           Classes Selected: {selectedClasses.length}
         </h2>
         <div>
-          <h2 className="text-lg font-medium">Total Fees: ${fees}</h2>
-          <button
-            className="btn btn-success btn-sm rounded-2xl
-            "
-          >
-            Make Payment
-          </button>
+          <h2 className="text-2xl font-medium">Total Fees: ${fees}</h2>
+          
         </div>
       </div>
       <div className="divider"></div>
