@@ -11,7 +11,7 @@ const Feedback = () => {
     const feedback = form.feedback.value;
     const body = { feedback };
 
-    fetch(`http://localhost:5000/classes/feedback/${Class._id}`, {
+    fetch(`https://assignment-12-sports-summer-server.vercel.app/classes/feedback/${Class._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

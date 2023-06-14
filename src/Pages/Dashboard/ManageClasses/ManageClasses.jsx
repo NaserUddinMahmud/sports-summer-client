@@ -17,7 +17,7 @@ const ManageClasses = () => {
         confirmButtonText: 'Confirm!'
       }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`http://localhost:5000/classes/approve/${Class._id}`, {
+            fetch(`https://assignment-12-sports-summer-server.vercel.app/classes/approve/${Class._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -53,7 +53,7 @@ const ManageClasses = () => {
         confirmButtonText: 'Confirm!'
       }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`http://localhost:5000/classes/deny/${Class._id}`, {
+            fetch(`https://assignment-12-sports-summer-server.vercel.app/classes/deny/${Class._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

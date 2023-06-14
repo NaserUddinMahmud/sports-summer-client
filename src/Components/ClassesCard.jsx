@@ -46,7 +46,7 @@ const ClassesCard = ({ item }) => {
         price,
         email: user.email,
       };
-      fetch("http://localhost:5000/selectedClasses", {
+      fetch("https://assignment-12-sports-summer-server.vercel.app/selectedClasses", {
         method: "POST",
         headers: {
           "content-type": "application/json",

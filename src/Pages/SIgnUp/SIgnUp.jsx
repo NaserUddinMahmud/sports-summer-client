@@ -36,7 +36,7 @@ const SignUp = () => {
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
             const saveUser = {name: data.name, email: data.email, photo:data.photoURL,  role: 'student'}
-            fetch("http://localhost:5000/users", {
+            fetch("https://assignment-12-sports-summer-server.vercel.app/users", {
               method: 'POST',
               headers: {
                 'content-type': 'application/json'
@@ -70,7 +70,7 @@ const SignUp = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         const saveUser = {name: loggedUser.displayName, email: loggedUser.email, role: 'student'}
-        fetch("http://localhost:5000/users", {
+        fetch("https://assignment-12-sports-summer-server.vercel.app/users", {
           method: 'POST',
           headers: {
             'content-type': 'application/json'

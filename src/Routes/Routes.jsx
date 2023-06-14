@@ -76,7 +76,7 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/payment/:id',
         element: <Payment></Payment>,
-        loader: ({params}) => fetch(`http://localhost:5000/selectedClasses/${params.id}`)
+        loader: ({params}) => fetch(`https://assignment-12-sports-summer-server.vercel.app/selectedClasses/${params.id}`)
       },
       // admin routes
       {
@@ -90,7 +90,7 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/feedback/:id',
         element: <AdminRoute><Feedback></Feedback></AdminRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
+        loader: ({params}) => fetch(`https://assignment-12-sports-summer-server.vercel.app/classes/${params.id}`)
       },
       {
         path: '/dashboard/manageClass',

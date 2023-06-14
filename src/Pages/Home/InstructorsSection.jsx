@@ -13,7 +13,7 @@ const InstructorsSection = () => {
   let cardCount = 0;
 
   useEffect(()=>{
-    fetch('http://localhost:5000/instructor')
+    fetch('https://assignment-12-sports-summer-server.vercel.app/instructor')
     .then(res => res.json())
     .then(data => setInstructors(data))
   })

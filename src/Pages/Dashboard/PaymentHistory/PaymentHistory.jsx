@@ -43,7 +43,7 @@ const PaymentHistory = () => {
         </div>
       ) : (
         <h2 className="text-3xl font-medium">
-          You have not enrolled in any class yet
+          You have not made any payment yet
         </h2>
       )}
     </>
