@@ -8,7 +8,7 @@ const InstructorRoute = ({children}) => {
     const{user, isLoading} = useContext(AuthContext);
     const [isInstructor, isInstructorLoading] = useInstructor()
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
     
     if(isLoading || isInstructorLoading){
         return <span className="loading loading-dots loading-lg"></span>

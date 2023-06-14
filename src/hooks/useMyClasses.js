@@ -3,18 +3,18 @@ import { useContext } from 'react'
 import { AuthContext } from '../context/AuthProvider'
 import useAxiosSecure from './useAxiosSecure'
 
-const useSelectedClass = () => {
+const useMyClasses = () => {
     const {user, isLoading} = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
-    const {  data: selectedClasses =[],  refetch } = useQuery({
-        queryKey: ['selectedClass' ],
+    const {  data: myClasses =[] } = useQuery({
+        queryKey: ['myClasses' ],
         enabled: !isLoading,
         queryFn: async () =>{
-            const res =await axiosSecure(`/selectedClasses?email=${user?.email}`)
-           
+            const res =await axiosSecure(`/myClasses?email=${user?.email}`)
+            console.log('axios res', res);
             return res.data;
         },
       })
-      return [selectedClasses,refetch]
+      return [myClasses]
 }
-export default useSelectedClass
+export default useMyClasses

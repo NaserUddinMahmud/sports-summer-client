@@ -3,17 +3,22 @@ import { Flip } from "react-awesome-reveal";
 
 // import { useEffect, useState } from "react";
 import InstructorsCard from "../../Components/InstructorsCard";
-import useInstructors from "../../hooks/useInstructors";
+
+import { useState } from "react";
+import { useEffect } from "react";
 
 const InstructorsSection = () => {
-  // const [instructors, setInstructors] =useState([])
-  // useEffect(()=>{
-  //   fetch('http://localhost:5000/instructors')
-  //   .then(res => res.json())
-  //   .then(data => setInstructors(data))
-  // })
+  const [instructors, setInstructors] =useState([]);
+  const maxCards = 6; 
+  let cardCount = 0;
 
-  const [instructors] = useInstructors()
+  useEffect(()=>{
+    fetch('http://localhost:5000/instructor')
+    .then(res => res.json())
+    .then(data => setInstructors(data))
+  })
+
+ 
   
   return (
     <>
@@ -24,9 +29,14 @@ const InstructorsSection = () => {
       </div>
       <div className="grid lg:grid-cols-3 gap-3 ">
         <Flip>
-          {instructors.map((instructor) => (
-            <InstructorsCard key={instructor._id} item={instructor}></InstructorsCard>
-          ))}
+        {instructors.map((Class) => {
+            if ( cardCount < maxCards) {
+              cardCount++; 
+              return <InstructorsCard key={Class._id} item={Class} />;
+            } else {
+              return null;
+            }
+          })}
         </Flip>
       </div>
       

@@ -20,6 +20,8 @@ import MyEnrolledClass from "../Pages/Dashboard/MyEnrolledClass/MyEnrolledClass"
 import StudentHome from "../Pages/Dashboard/StudentHome/StudentHome";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import InstructorHome from "../Pages/Dashboard/InstructorHome/InstructorHome";
+import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +70,10 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><MyEnrolledClass></MyEnrolledClass></PrivateRoute>,
       },
       {
+        path:'/dashboard/paymentHistory',
+        element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>,
+      },
+      {
         path: '/dashboard/payment/:id',
         element: <Payment></Payment>,
         loader: ({params}) => fetch(`http://localhost:5000/selectedClasses/${params.id}`)
@@ -98,6 +104,11 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/addClass',
         element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
+      },
+      {
+        path: '/dashboard/myClasses',
+        element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>,
+       
       },
     ]
   }

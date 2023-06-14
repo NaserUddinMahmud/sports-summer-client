@@ -11,7 +11,7 @@ const useEnrolledClasses = () => {
         enabled: !isLoading,
         queryFn: async () =>{
             const res =await axiosSecure(`/enrolledClasses?email=${user?.email}`)
-            console.log('axios res', res);
+           
             return res.data;
         },
       })

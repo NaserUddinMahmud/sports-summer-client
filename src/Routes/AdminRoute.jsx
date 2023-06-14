@@ -7,7 +7,7 @@ const AdminRoute = ({children}) => {
     const{user, isLoading} = useContext(AuthContext);
     const [isAdmin, isAdminLoading] = useAdmin()
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
     
     if(isLoading || isAdminLoading){
         return <span className="loading loading-dots loading-lg"></span>

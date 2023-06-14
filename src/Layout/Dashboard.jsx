@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 import { FaBasketballBall, FaHome } from "react-icons/fa";
@@ -39,7 +39,7 @@ const Dashboard = () => {
               <Link className="btn btn-success my-1"  to={"/dashboard/addClass"}><li>
                 Add a Class
               </li></Link>
-              <Link ><li>
+              <Link className="btn btn-success my-1"  to={'/dashboard/myClasses'}><li>
                 My Classes
               </li></Link>
             </>)
@@ -52,6 +52,9 @@ const Dashboard = () => {
               </li></Link>
               <Link className="btn btn-success my-1" to={'/dashboard/myEnrolledClass'}><li>
                 My Enrolled Classes
+              </li></Link>
+              <Link className="btn btn-success my-1" to={'/dashboard/paymentHistory'}><li>
+                Payment History
               </li></Link>
             </>
           )}
