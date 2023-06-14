@@ -9,7 +9,7 @@ const MyEnrolledClass = () => {
         <div className="w-3/4">
           <div className="flex justify-evenly items-center w-full">
             <h2 className="text-3xl font-medium">
-              Classes Selected: {enrolledClasses.length}
+              Classes Enrolled: {enrolledClasses.length}
             </h2>
           </div>
           <div className="divider"></div>

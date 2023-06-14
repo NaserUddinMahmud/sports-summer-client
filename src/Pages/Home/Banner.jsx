@@ -9,7 +9,7 @@ const Banner = () => {
               src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1031&q=80"
               className="w-full  max-h-screen"
             />
-            <div className="absolute flex  justify-center  bg-gradient-to-r from-gray-500 via-black to-gray-500 opacity-50 h-full w-full">
+            <div className="absolute flex  justify-center  bg-gradient-to-r from-green-800 via-black to-green-800 opacity-50 h-full w-full">
               <h2 className="text-5xl font-bold text-white pt-64">
                 Discover Your Inner Sportsman
               </h2>
@@ -28,7 +28,7 @@ const Banner = () => {
               src="https://images.unsplash.com/photo-1626248801379-51a0748a5f96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
               className="w-full max-h-screen"
             />
-             <div className="absolute flex  justify-center  bg-gradient-to-r from-gray-500 via-black to-gray-500 opacity-50 h-full w-full">
+             <div className="absolute flex  justify-center  bg-gradient-to-r from-green-800 via-black to-green-800 opacity-50 h-full w-full">
               <h2 className="text-5xl font-bold text-white pt-64">
                 This Summer
               </h2>
@@ -47,7 +47,7 @@ const Banner = () => {
               src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
               className="w-full max-h-screen"
             />
-             <div className="absolute flex  justify-center  bg-gradient-to-r from-gray-500 via-black to-gray-500 opacity-50 h-full w-full">
+             <div className="absolute flex  justify-center  bg-gradient-to-r from-green-800 via-black to-green-800 opacity-50 h-full w-full">
               <h2 className="text-5xl font-bold text-white pt-64">
                 With Sports Summer
               </h2>
@@ -66,7 +66,7 @@ const Banner = () => {
               src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1007&q=80"
               className="w-full max-h-screen"
             />
-             <div className="absolute flex  justify-center  bg-gradient-to-r from-gray-500 via-black to-gray-500 opacity-50 h-full w-full">
+             <div className="absolute flex  justify-center  bg-gradient-to-r from-green-800 via-black to-green-800 opacity-50 h-full w-full">
               <h2 className="text-5xl font-bold text-white pt-64">
                 Join Today
               </h2>

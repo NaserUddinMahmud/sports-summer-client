@@ -1,6 +1,8 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import { FaBasketballBall, FaHome } from "react-icons/fa";
+import { IoAccessibility } from "react-icons/io5";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
@@ -25,39 +27,45 @@ const Dashboard = () => {
           {/* Sidebar content here */}
           {isAdmin ? (
             <>
-              <li>
-                <Link to={'/dashboard/manageClass'}>Manage Classes</Link>
-              </li>
-              <li>
-                <Link to={"/dashboard/allUsers"}>Manage Users</Link>
-              </li>
+              <Link className="btn btn-success my-1"  to={'/dashboard/manageClass'}><li>
+                Manage Classes
+              </li></Link>
+              <Link className="btn btn-success my-1"  to={"/dashboard/allUsers"}><li>
+                Manage Users
+              </li></Link>
             </>
           ) : isInstructor?
           (<>
-              <li>
-                <Link to={"/dashboard/addClass"}>Add a Class</Link>
-              </li>
-              <li>
-                <Link >My Classes</Link>
-              </li>
+              <Link className="btn btn-success my-1"  to={"/dashboard/addClass"}><li>
+                Add a Class
+              </li></Link>
+              <Link ><li>
+                My Classes
+              </li></Link>
             </>)
              : (
             <>
-              <li>
-                <Link to={"/dashboard/mySelectedClass"}>
+              <Link className="btn btn-success my-1"  to={"/dashboard/mySelectedClass"}><li>
+                
                   My Selected Classes
-                </Link>
-              </li>
-              <li>
-                <Link to={'/dashboard/myEnrolledClass'}>My Enrolled Classes</Link>
-              </li>
+                
+              </li></Link>
+              <Link className="btn btn-success my-1" to={'/dashboard/myEnrolledClass'}><li>
+                My Enrolled Classes
+              </li></Link>
             </>
           )}
 
           <div className="divider"></div>
-          <li>
-            <Link to={"/"}>Home</Link>
-          </li>
+          <Link className="btn btn-success my-1"  to={"/"}><FaHome/><li>
+            Home
+          </li></Link>
+          <Link className="btn btn-success my-1"  to={"/classes"}><FaBasketballBall/><li>
+            Classes
+          </li></Link>
+          <Link className="btn btn-success my-1"  to={"/instructors"}><IoAccessibility/><li>
+            Instructor
+          </li></Link>
         </ul>
       </div>
     </div>

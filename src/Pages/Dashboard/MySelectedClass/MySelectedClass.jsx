@@ -99,7 +99,7 @@ const MySelectedClass = () => {
     </div>
       :
       <h2 className="text-3xl font-medium">
-          You have not selected any class yet
+          No class selected
         </h2>
     }
     </>

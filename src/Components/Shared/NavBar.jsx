@@ -26,23 +26,23 @@ const NavBar = () => {
   const navItems = (
     <>
       <li>
-        <NavLink to={'/'}className={({ isActive }) =>
-                  isActive ? "bg-success rounded-2xl " : ""}>Home</NavLink>
+        <NavLink to={'/'} className={({ isActive }) =>
+                  isActive ? "font-bold bg-success rounded-2xl " : "font-bold"}>Home</NavLink>
       </li>
       <li>
-      <NavLink to={'/classes'}className={({ isActive }) =>
-                  isActive ? "bg-success rounded-2xl " : ""}>Classes</NavLink>
+      <NavLink to={'/classes'} className={({ isActive }) =>
+                  isActive ? "font-bold bg-success rounded-2xl " : "font-bold"}>Classes</NavLink>
       </li>
       <li>
-      <NavLink to={'/instructors'}className={({ isActive }) =>
-                  isActive ? "bg-success rounded-2xl " : ""}>Instructors</NavLink>
+      <NavLink to={'/instructors'} className={({ isActive }) =>
+                  isActive ? "font-bold bg-success rounded-2xl " : "font-bold"}>Instructors</NavLink>
      
       </li>
       
-        {user && <li>{isAdmin?(<NavLink to={'/dashboard/adminHome'}className={({ isActive }) =>
-                  isActive ? "bg-success rounded-2xl " : ""}>Dashboard</NavLink>) :isInstructor?(<NavLink to={'/dashboard/InstructorHome'}className={({ isActive }) =>
-                  isActive ? "bg-success rounded-2xl " : ""}>Dashboard</NavLink>):(<NavLink to={'/dashboard/studentHome'}className={({ isActive }) =>
-                  isActive ? "bg-success rounded-2xl " : ""}>Dashboard</NavLink>)}</li>}
+        {user && <li>{isAdmin?(<NavLink to={'/dashboard/adminHome'} className={({ isActive }) =>
+                  isActive ? "font-bold bg-success rounded-2xl " : "font-bold"}>Dashboard</NavLink>) :isInstructor?(<NavLink to={'/dashboard/InstructorHome'} className={({ isActive }) =>
+                  isActive ? "font-bold bg-success rounded-2xl " : "font-bold"}>Dashboard</NavLink>):(<NavLink to={'/dashboard/studentHome'} className={({ isActive }) =>
+                  isActive ? "font-bold bg-success rounded-2xl " : "font-bold"}>Dashboard</NavLink>)}</li>}
       
      
     </>

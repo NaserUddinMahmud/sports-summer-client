@@ -33,7 +33,8 @@ const AddItem = () => {
             instructor,
             instructorEmail,
             image: imgURL,
-            status:'pending'
+            status:'pending',
+            enrolledCount: 0
           };
           axiosSecure.post("/classes", newClass).then((data) => {
             if (data.data.insertedId) {
@@ -124,11 +125,7 @@ const AddItem = () => {
           />{errors.price && (
             <span className="text-red-500 text-sm">Price is required</span>)}
         </div>
-        
-
-     
-
-        <input className="btn btn-sm bg-green-200 mt-4" type="submit" value="Add Class" />
+        <input className="btn bg-green-200 mt-4 flex justify-center" type="submit" value="Add Class" />
       </form>
     </div>
   );
