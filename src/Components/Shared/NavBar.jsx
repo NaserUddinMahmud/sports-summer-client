@@ -4,10 +4,14 @@ import { HiLogin, HiLogout } from "react-icons/hi";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const NavBar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor()
     const handleSignOut = () => {
         logOut()
           .then(() => {
@@ -34,10 +38,12 @@ const NavBar = () => {
                   isActive ? "bg-success rounded-2xl " : ""}>Instructors</NavLink>
      
       </li>
-      <li>
-        {user && <NavLink to={'/dashboard'}className={({ isActive }) =>
-                  isActive ? "bg-success rounded-2xl " : ""}>Dashboard</NavLink>}
-      </li>
+      
+        {user && <li>{isAdmin?(<NavLink to={'/dashboard/adminHome'}className={({ isActive }) =>
+                  isActive ? "bg-success rounded-2xl " : ""}>Dashboard</NavLink>) :isInstructor?(<NavLink to={'/dashboard/InstructorHome'}className={({ isActive }) =>
+                  isActive ? "bg-success rounded-2xl " : ""}>Dashboard</NavLink>):(<NavLink to={'/dashboard/studentHome'}className={({ isActive }) =>
+                  isActive ? "bg-success rounded-2xl " : ""}>Dashboard</NavLink>)}</li>}
+      
      
     </>
   );

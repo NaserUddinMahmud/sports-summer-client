@@ -17,6 +17,9 @@ import Feedback from "../Pages/Dashboard/ManageClasses/Feedback";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import MyEnrolledClass from "../Pages/Dashboard/MyEnrolledClass/MyEnrolledClass";
+import StudentHome from "../Pages/Dashboard/StudentHome/StudentHome";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import InstructorHome from "../Pages/Dashboard/InstructorHome/InstructorHome";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +54,11 @@ export const router = createBrowserRouter([
     path: '/dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
+      // student Routes
+      {
+        path: '/dashboard/studentHome',
+        element:<StudentHome></StudentHome>
+      },
       {
         path:'/dashboard/mySelectedClass',
         element: <PrivateRoute><MySelectedClass></MySelectedClass></PrivateRoute>
@@ -64,24 +72,33 @@ export const router = createBrowserRouter([
         element: <Payment></Payment>,
         loader: ({params}) => fetch(`http://localhost:5000/selectedClasses/${params.id}`)
       },
+      // admin routes
+      {
+        path: '/dashboard/adminHome',
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+      },
       {
         path:'/dashboard/allUsers',
         element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
       {
-        path: '/dashboard/addClass',
-        element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
+        path: '/dashboard/feedback/:id',
+        element: <AdminRoute><Feedback></Feedback></AdminRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
       },
       {
         path: '/dashboard/manageClass',
         element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
       },
+      // instructor routes
       {
-        path: '/dashboard/feedback/:id',
-        element: <AdminRoute><Feedback></Feedback></AdminRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
-      }
-      
+        path: '/dashboard/instructorHome',
+        element: <InstructorRoute><InstructorHome></InstructorHome></InstructorRoute>
+      },
+      {
+        path: '/dashboard/addClass',
+        element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
+      },
     ]
   }
 ]);
